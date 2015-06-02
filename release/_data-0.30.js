@@ -9432,7 +9432,7 @@ me.resolve(true);
               index = parentObj.data.indexOf(removedItem); // might check if valid...
 
             // Moving the object in the array
-            if (parentObj && removedItem) {
+            if (parentObj && removedItem && (removedItem.__p == parentObj.__id)) {
 
               // __radioURL
 
