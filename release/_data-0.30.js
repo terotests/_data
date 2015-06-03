@@ -4951,6 +4951,14 @@ var testDataObjects_prototype = function() {
             }
           }
         }
+        _myTrait_.renderTemplate = function(tplData) {
+
+          var comp = templateCompiler();
+          var jsonTplData = comp.compile(tplData);
+          var dom = comp.composeTemplate(this._docData, jsonTplData);
+
+          return dom;
+        }
         _myTrait_.restackOps = function(input) {
           var cmds = [],
             windowSize = 5;
@@ -16843,10 +16851,6 @@ me.resolve(true);
         newDoc.then(
           function() {
 
-            console.log("Got the DOC!");
-            console.log(newDoc);
-
-            // alert("Tpl load took "+ ( (new Date()).getTime()-(loadTime2.getTime()))+"ms");
 
             var pName = "";
             if (me.isFunction(path)) {
