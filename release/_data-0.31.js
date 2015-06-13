@@ -4642,6 +4642,19 @@ var testDataObjects_prototype = function() {
             list = [],
             me = this;
 
+          if (this.isFulfilled()) {
+            me._docData.data.forEach(function(d) {
+              if (d.__undone) return;
+              var item = _data(d);
+              if (item.isFulfilled()) list.push(item);
+            });
+            list.forEach(function(i) {
+              fn(i);
+            })
+            myProm.resolve(true);
+            return myProm;
+          }
+
           this.then(
             function() {
 
