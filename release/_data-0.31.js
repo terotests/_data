@@ -5413,6 +5413,32 @@ var testDataObjects_prototype = function() {
 
           return data;
         }
+        _myTrait_.toPlainData = function(t) {
+          var o, me = this,
+            data = this._docData.data;
+          if (this.isArray(this._data)) {
+            o = [];
+          } else {
+            o = {};
+          }
+
+          for (var n in data) {
+            if (data.hasOwnProperty(n)) {
+              var v = data[n];
+              if (typeof(v) == "undefined") continue;
+              if (nonRecursive) {
+                if (this.isObject(v) || this.isArray(v)) continue;
+              }
+              if (this.isObject(v)) {
+                o[n] = _data(v).toPlainData();
+              } else {
+                o[n] = v;
+              }
+            }
+          }
+
+          return o;
+        }
         _myTrait_.unset = function(name) {
 
           _up.unset(this._docData.__id, name);
