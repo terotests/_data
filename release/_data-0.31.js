@@ -5413,7 +5413,7 @@ var testDataObjects_prototype = function() {
 
           return data;
         }
-        _myTrait_.toPlainData = function(t) {
+        _myTrait_.toPlainData = function(nonRecursive) {
           var o, me = this,
             data = this._docData.data;
           if (this.isArray(this._data)) {
