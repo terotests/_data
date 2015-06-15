@@ -9104,7 +9104,7 @@ me.resolve(true);
         }
         var me = this;
 
-        cmdList.forEach(function(c) {
+        if (cmdList) cmdList.forEach(function(c) {
           me._pushChannelCommand(rootDoc.__radioURL, c.cmd, c.ctx, false, rootDoc.__radio);
         });
 
