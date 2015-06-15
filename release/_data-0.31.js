@@ -5413,7 +5413,7 @@ var testDataObjects_prototype = function() {
 
           return data;
         }
-        _myTrait_.toPlainData = function(nonRecursive) {
+        _myTrait_.toPlainData = function(t) {
           var o, me = this,
             data = this._docData.data;
           if (this.isArray(this._data)) {
@@ -10274,10 +10274,12 @@ me.resolve(true);
 
         var me = this;
         if (ns) {
-          console.log("Using namespace " + ns);
-          cmdList.forEach(function(c) {
-            c.cmd = me._transformCmdToNs(c.cmd, ns);
-          });
+          // console.log("Using namespace "+ns);
+          if (cmdList) {
+            cmdList.forEach(function(c) {
+              c.cmd = me._transformCmdToNs(c.cmd, ns);
+            });
+          }
           obj = me._transformObjToNs(obj, ns);
           obj.__ctxCmdList = cmdList;
           this._addToCache(obj);
